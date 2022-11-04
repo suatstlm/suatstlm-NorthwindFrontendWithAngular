@@ -1,0 +1,89 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Products</h4>
+        </div>
+        <div class="card-body">
+          <div class="row card-header">
+            <button
+              type="button"
+              [class]="getAllCategoryClass()"
+              routerLink="/products"
+            >
+              All Categories
+            </button>
+            <button
+              type="button"
+              *ngFor="let category of categories"
+              (click)="setCurrentCategory(category)"
+              [class]="getCurrentCategoryClass(category)"
+              routerLink="/products/category/{{ category.categoryId }}"
+            >
+              {{ category.categoryName }}
+            </button>
+          </div>
+          <br />
+
+          <div class="col-md-6 pr-md-1">
+            <div class="form-group">
+              <label for="filterText"> Search for Products</label>
+              <input
+                id="filterText"
+                [(ngModel)]="filterText"
+                class="form-control"
+                placeholder="Product name"
+                type="text"
+              />
+            </div>
+            <div *ngIf="filterText" class="typography-line">
+              <p class="text-muted">you searched for {{ filterText }}</p>
+            </div>
+          </div>
+          <br />
+          <div class="table-responsive">
+            <table class="table tablesorter" id="">
+              <thead class="text-primary">
+                <tr>
+                  <th>Product Name</th>
+                  <th>Stock</th>
+                  <th class="text-center">Price</th>
+                  <th class="text-center">Price with Vat</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let product of products | appFilter: filterText"
+                  appHighlight
+                  [searchedWord]="searchText"
+                  [content]="product.productName"
+                  [classToApply]="'text-primary'"
+                  [setTitle]="'true'"
+                >
+                  <td>{{ product.productName | uppercase }}</td>
+                  <td>{{ product.unitsInStock }}</td>
+                  <td class="text-center">
+                    {{ product.unitPrice | currency }}
+                  </td>
+                  <td class="text-center">
+                    {{ product.unitPrice | vatAdded: 10 | currency }}
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-success"
+                      (click)="addToCart(product)"
+                    >
+                      Add to Cart
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

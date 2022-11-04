@@ -1,0 +1,72 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header"><h5 class="title">Product Add</h5></div>
+        <div class="card-body">
+          <form [formGroup]="productAddForm">
+            <div class="row">
+              <div class="col-md-6 pr-md-1">
+                <div class="form-group">
+                  <label for="productName"> Product Name </label>
+                  <input
+                    id="productName"
+                    class="form-control"
+                    type="text"
+                    formControlName="productName"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 pr-md-1">
+                <div class="form-group">
+                  <label for="categoryId"> Category </label>
+                  <input
+                    id="categoryId"
+                    class="form-control"
+                    type="number"
+                    formControlName="categoryId"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 pr-md-1">
+                <div class="form-group">
+                  <label for="unitsInStock"> In Stock </label>
+                  <input
+                    id="unitsInStock"
+                    class="form-control"
+                    type="number"
+                    formControlName="unitsInStock"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 pr-md-1">
+                <div class="form-group">
+                  <label for="unitPrice"> Price </label>
+                  <input
+                    id="unitPrice"
+                    class="form-control"
+                    type="number"
+                    formControlName="unitPrice"
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="row">
+              <div class="col-md-6 pr-md-1">
+                <div class="form-group">
+                  <button class="btn btn-success animation-on-hover " type="button" (click)="addProduct()" >Add</button>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

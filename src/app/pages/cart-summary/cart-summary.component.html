@@ -1,0 +1,28 @@
+<li class="nav-item" ngbDropdown *ngIf="cartItems.length > 0">
+  <a
+    class="nav-link"
+    data-toggle="dropdown"
+    href="javascript:void(0)"
+    ngbDropdownToggle
+  >
+    <div class="notification d-none d-lg-block d-xl-block"></div>
+    <i class="tim-icons icon-cart"> </i>
+    <p class="d-lg-none">Your Cart</p>
+  </a>
+  <ul class="dropdown-menu-right dropdown-navbar" ngbDropdownMenu>
+    <li class="nav-link" *ngFor="let cartItem of cartItems">
+      <a class="nav-item" href="javascript:void(0)" ngbDropdownItem>
+        <span class="badge badge-default">
+          {{ cartItem.quantity }}
+        </span>
+        {{ cartItem.product.productName }}
+        <button
+          class="btn btn-warning btn-fab btn-icon btn-round"
+          (click)="removeFromCart(cartItem.product)"
+        >
+          <i class="tim-icons icon-trash-simple"></i>
+        </button>
+      </a>
+    </li>
+  </ul>
+</li>
